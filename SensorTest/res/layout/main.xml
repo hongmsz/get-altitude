@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <?Button 
+    	android:text="Initialize" 
+    	android:id="@+id/btInit" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content">
+    </Button?>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/setB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="set" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/setB2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="set" />
+
+    </LinearLayout>
+
+	<TextView  
+		android:id="@+id/TextView"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text=""
+	    />
+</LinearLayout>
