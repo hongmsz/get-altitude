@@ -4,8 +4,12 @@ package hongmsz.test.sensortest.Activity;
 //import android.app.Activity;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -19,8 +23,11 @@ import hongmsz.test.sensortest.R;
 public class MapLoc extends MapActivity {
 	List<Overlay> mapOverlays;
 	MapView mapView; 
+	Drawable drawable; 
+	ItemOverlay itemizedOverlay;
 
     int lati, longi;
+    float w, h;
 	
 	 protected boolean isRouteDisplayed() {
 	        return false;
@@ -30,6 +37,12 @@ public class MapLoc extends MapActivity {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.locmap);
+	        
+	        Display d2;
+	        d2 = ((WindowManager) this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+	        
+	        w = d2.getWidth();
+	        h = d2.getHeight();
 	        
 	        Intent i0 = getIntent();
 	        Bundle b = i0.getExtras();
@@ -43,10 +56,17 @@ public class MapLoc extends MapActivity {
 	        GeoPoint p=new GeoPoint(lati, longi);
 	        MapController mc=mapView.getController();        
 	        mc.animateTo(p);
-	        mc.setZoom(18); 
+	        mc.setZoom(19); 
 	        
-	        mapOverlays = mapView.getOverlays(); 
+	        mapOverlays = mapView.getOverlays();
+	        
+	        drawable = this.getResources().getDrawable(R.drawable.marker); 
+	        
+	        itemizedOverlay = new ItemOverlay(drawable);
 	        
 	        OverlayItem overlayitem = new OverlayItem(p, "", "");
+	        
+	        itemizedOverlay.addOverlay(overlayitem); 
+	        mapOverlays.add(itemizedOverlay);
 	    }        
 }
