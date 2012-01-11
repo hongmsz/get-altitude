@@ -38,7 +38,9 @@ public class SensorTest extends Activity implements SensorEventListener {
 	private TextView _TextView = null;
     private Button _btInit = null;
     private EditText _et, _et2;
-    private Button setB, setB2;
+    private Button setB, setB2, _bmap;
+    
+    Intent imView;
     
     long _timeMillis;
     String loc = 572+"";
@@ -112,6 +114,8 @@ public class SensorTest extends Activity implements SensorEventListener {
         TimeZone timezone = TimeZone.getTimeZone("Etc/GMT-9");
         TimeZone.setDefault(timezone);
         
+        imView = new Intent(this, MapLoc.class);
+        
         _timeMillis = System.currentTimeMillis();
         
         p0 = Float.parseFloat(getPageSource(loc)+"f");
@@ -133,6 +137,9 @@ public class SensorTest extends Activity implements SensorEventListener {
         setB2.setOnClickListener(on_Set);
         
         _TextView = (TextView) findViewById(R.id.TextView);
+        
+        _bmap = (Button)findViewById(R.id.bMap); 
+        _bmap.setOnClickListener(on_Set);
        
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 //        sensorManager2 = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -430,7 +437,16 @@ public class SensorTest extends Activity implements SensorEventListener {
 				}
 			}else if(v.getId()==R.id.setB2){
 				c_altitude = Float.parseFloat(_et2.getText().toString());
-			}			
+			}else if(v.getId()==R.id.bMap){
+				//int num = xxxx;
+				Bundle cc = new Bundle();
+				cc.putInt("lati", (int) (lati*1000000));
+				cc.putInt("longi", (int) (longi*1000000));
+//				cc.putString("key", "test_data");
+//				a.putExtras(cc);
+				imView.putExtras(cc);
+				startActivity(imView);
+			}
 			p0 = Float.parseFloat(getPageSource(loc)+"f");
 		}
 	};
