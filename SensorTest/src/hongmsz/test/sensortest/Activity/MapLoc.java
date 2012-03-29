@@ -56,7 +56,7 @@ public class MapLoc extends MapActivity {
 	        GeoPoint p=new GeoPoint(lati, longi);
 	        MapController mc=mapView.getController();        
 	        mc.animateTo(p);
-	        mc.setZoom(19); 
+	        mc.setZoom(19);
 	        
 	        mapOverlays = mapView.getOverlays();
 	        

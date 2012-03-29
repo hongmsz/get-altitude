@@ -144,9 +144,9 @@ public class SensorTest extends Activity implements SensorEventListener {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 //        sensorManager2 = (SensorManager) getSystemService(SENSOR_SERVICE);
 //        sensorManager3 = (SensorManager) getSystemService(SENSOR_SERVICE); 
-//        accelerormeterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//        Gyro = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
-//        RGyro = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        accelerormeterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Gyro = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+        RGyro = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         Tmp11 = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
         
         isGPS = locMgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -231,7 +231,7 @@ public class SensorTest extends Activity implements SensorEventListener {
 	
     public void onStart(){
     	super.onStart();
-/*    	
+//*    	
     	if (accelerormeterSensor != null) 
             sensorManager.registerListener(this, accelerormeterSensor, 
 //                   SensorManager.SENSOR_DELAY_GAME);
@@ -266,7 +266,7 @@ public class SensorTest extends Activity implements SensorEventListener {
     } 
 
     public void onSensorChanged(SensorEvent event) { 
-/*
+//*
     	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) { 
             long currentTime = System.currentTimeMillis(); 
             long gabOfTime = (currentTime - lastTime); 
@@ -378,25 +378,25 @@ public class SensorTest extends Activity implements SensorEventListener {
     			String.format(
 //    					"Current\nx: %f\ny: %f\nz: %f\n\n" +
 //    					"Difference\nx: %f\ny: %f\nz: %f\n\n" +
-//    					"speed: %f\n\n" +
-//    					"angle: %f\n\n" +
-//    					"Direction\nx: %f\ny: %f\nz: %f\n\n" +
-//    					"Gyro\nx: %f\ny: %f\nz: %f\n\n" +
+    					"speed: %f\n\n" +
+    					"angle: %f\n\n" +
+    					"Direction\nx: %f\ny: %f\nz: %f\n\n" +
+    					"Gyro\nx: %f\ny: %f\nz: %f\n\n" +
 //    					"ex) 서울: 1021.8 성남: 1022.2\n\n"+
-    					"%s\n\n"+
-    					"Pressure\n%.3f (hPa)\n\n" +
-    					"e-Pressure\n%.3f (hPa)\n\n" +
+    					"%s  "+
+    					"Pressure: %.3f (hPa)\n\n" +
+//    					"e-Pressure\n%.3f (hPa)\n\n" +
     					"Latitude: %f, Longitude: %f, " +
-    					"Altitude\n%.2f (m)\n\n", 
+    					"Altitude\n%.2f (m)\n", 
 //    					x, y, z, 
 //    					dX, dY, dZ, 
-//    					speed, 
-//    					angle, 
-//    					gx, gy, gz, 
-//    					gx2, gy2, gz2,
+    					speed, 
+    					angle, 
+    					gx, gy, gz, 
+    					gx2, gy2, gz2,
     					weather,
     					px,
-    					pc,
+//    					pc,
     					lati, longi,
     					altitude
     			)
